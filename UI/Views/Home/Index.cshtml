@@ -1,0 +1,77 @@
+﻿@model TCViewModel
+
+
+@{
+	ViewData["Title"] = "Ana Sayfa";
+}
+
+
+@if (ViewBag.SonucBasarili != null)
+{
+
+	@if (@ViewBag.SonucBasarili == true)
+	{
+		<div class="alert alert-primary mt-4" role="alert" style="display:inline">
+			Doğrulama Sonucu: @ViewBag.SonucBasarili
+		</div>
+	}
+
+	@if (@ViewBag.SonucBasarili == false)
+	{
+		<div class="alert alert-danger mt-4" role="alert" style="display:inline">
+			Doğrulama Sonucu: @ViewBag.SonucBasarili
+		</div>
+	}
+}
+
+@if (ViewBag.Hata != null)
+{
+
+	<div class="alert alert-danger" role="alert">
+		Hata: @ViewBag.Hata
+	</div>
+}
+
+<div class="row">
+	<div class="col-md-6 mx-auto">
+		<form asp-action="Index" enctype="multipart/form-data" id="formsend">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group my-4">
+				<label asp-for="Name" class="control-label"></label>
+				<input asp-for="Name" class="form-control" />
+				<span asp-validation-for="Name" class="text-danger"></span>
+			</div>
+
+			<div class="form-group my-4">
+				<label asp-for="LastName" class="control-label"></label>
+				<input asp-for="LastName" class="form-control" />
+				<span asp-validation-for="LastName" class="text-danger"></span>
+			</div>
+
+			<div class="form-group my-4">
+				<label asp-for="BirthDate" class="control-label"></label>
+				<input asp-for="BirthDate" class="form-control" />
+				<span asp-validation-for="BirthDate" class="text-danger"></span>
+			</div>
+
+			<div class="form-group my-4">
+				<label asp-for="CitizenId" class="control-label"></label>
+				<input asp-for="CitizenId" class="form-control" />
+				<span asp-validation-for="CitizenId" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<button type="submit" value="Create" id="mySubmit" class="btn btn-primary btn-lg btn-block"><i class="fa-regular fa-save me-2"></i> Gönder</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+
+
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+
+}
