@@ -25,8 +25,11 @@ namespace UI
 			app.UseRouting();
 
 			app.UseAuthorization();
+			app.UseEndpoints(endpoints =>
+			{
 
-			app.MapControllerRoute(
+			});
+                app.MapControllerRoute(
 				name: "default",
 				pattern: "{controller=Home}/{action=Index}/{id?}");
 

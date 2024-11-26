@@ -1,23 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.ServiceModel;
-using TCDogrula;
 using UI.Models;
 
 namespace UI.Controllers
 {
-	public class HomeController : Controller
+    public class HomeController(ILogger<HomeController> logger) : Controller
 	{
-		private readonly ILogger<HomeController> _logger;
-
-		public HomeController(ILogger<HomeController> logger)
-		{
-			_logger = logger;
-		}
-
-		public IActionResult Index()
-		{
-			
+        public IActionResult Index()
+		{			
 			return View();
 		}
 
@@ -49,13 +40,11 @@ namespace UI.Controllers
 						ViewBag.Hata = ex.Message;
 					}
 				}
-
 			}
 			else
 			{
 				return View(model);	
 			}
-
 			
 			return View();
 		}
